@@ -6,10 +6,6 @@
 
 
 def fibs(n):
-    ''' 
-    This function computes the first n fibonacci numbers.
-    Notice that this function used O(n) memory.
-    '''
     fibs = []
     fibs.append(1)
     if n == 1:
@@ -21,20 +17,10 @@ def fibs(n):
 
 
 def fib_bad(n):
-    ''' 
-    This function computes the n-th fibonacci number,
-    but it uses O(n) memory to do so,
-    which is bad.
-    '''
     return fibs(n)[-1]
 
 
 def fib(n):
-    ''' 
-    This function computes the n-th fibonacci number,
-    but it consumes only O(1) memory,
-    and is optimal.
-    '''
     if n < 2:
         return 1
     f0 = 1
