@@ -102,4 +102,3 @@ def fib_yield(n=None):
         for i in range(n):
             i1, i2 = i2, (i2 + i1)
             yield i1
-
