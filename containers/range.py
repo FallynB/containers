@@ -21,7 +21,7 @@ def range(a, b=None, c=None):
 
     NOTE:
     For efficiency reasons, Python's built-in range
-    object is written in the C programming
+    objects is written in the C programming
     language rather than natively in python.
     You can find the source code online
     at https://hg.python.org/cpython/file/ee7b713fec71/Objects/rangeobject.c
