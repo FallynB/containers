@@ -121,7 +121,7 @@ class BinaryTree():
             return self.postorder(self.root, [])
         else:
             raise ValueError('traversal_type=' + str(traversal_type) + ' is not supported.')
-        
+
     def preorder(self, start, traversal):
         '''
         FIXME:
