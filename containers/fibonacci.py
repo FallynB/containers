@@ -36,8 +36,6 @@ def fib(n):
     '''
     if n < 2:
         return 1
-    f0 = 1
-    f1 = 1
 
 ##########################################################
 # fibonacci number code using generators;
