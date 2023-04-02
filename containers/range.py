@@ -13,4 +13,3 @@ def range(a, b=None, c=None):
     while (skip > 0 and i < end) or (skip < 0 and i > end):
         yield i
         i += skip
-
