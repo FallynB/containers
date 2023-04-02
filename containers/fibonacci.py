@@ -1,3 +1,4 @@
+
 ################################################################
 # example fibonacci number code;
 # you do not have to modify this code in any way
@@ -36,6 +37,14 @@ def fib(n):
     '''
     if n < 2:
         return 1
+    f0 = 1
+    f1 = 1
+    for i in range(n-1):
+        f2 = f1 + f0
+        f0 = f1
+        f1 = f2
+    return f2
+
 
 ##########################################################
 # fibonacci number code using generators;
