@@ -2,13 +2,13 @@ from containers.BinaryTree import BinaryTree, Node
 
 
 class BST(BinaryTree):
-    ''' 
+    '''
     The BST is a superclass of BinaryTree.
     and we don't have to reimplement them.
     '''
 
     def __init__(self, xs=None):
-        ''' 
+        '''
         FIXME:
         If xs is a list (i.e. xs is not None),
         then each element of xs needs to be inserted into the BST.
@@ -31,23 +31,12 @@ class BST(BinaryTree):
             raise StopIteration()
 
     def __repr__(self):
-        ''' 
+        '''
         Notice that in the BinaryTree class,
         we defined a __str__ function,
         but not a __repr__ function.
         '''
         return type(self).__name__ + '(' + str(self.to_list('inorder')) + ')'
-
-    def is_bst_satisfied(self):
-        ''' 
-        Whenever you implement a data structure,
-        if self.root:
-            return BST._is_bst_satisfied(self.root)
-        return True
-        '''
-        if self.root:
-            return BST._is_bst_satisfied(self.root)
-        return True
 
     def is_bst_satisfied(self):
         '''
@@ -242,4 +231,3 @@ class BST(BinaryTree):
         '''
         for x in xs:
             self.root = BST._remove(x, self.root)
-
