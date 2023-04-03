@@ -1,4 +1,5 @@
 def range(a, b=None, c=None):
+    '''additional'''
     if b is not None:
         begin = a
         end = b
