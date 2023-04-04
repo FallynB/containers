@@ -4,7 +4,7 @@ The functions in this file are considerably harder
 than the functions in the BinaryTree and BST files,
 but there are fewer of them.
 '''
-
+import copy
 from containers.BinaryTree import BinaryTree, Node
 from containers.BST import BST
 
@@ -23,6 +23,9 @@ class AVLTree(BST):
         Implement this function.
         '''
         super().__init__()
+        if xs is not None:
+            for x in xs:
+                self.insert(x)
 
     def balance_factor(self):
         '''
@@ -37,6 +40,9 @@ class AVLTree(BST):
         '''
         if node is None:
             return 0
+        print( "left height:",BinaryTree._height(node.left),"right height", BinaryTree._height(node.right),"bf:",BinaryTree._height(node.left) - BinaryTree._height(node.right)
+ )
+
         return BinaryTree._height(node.left) - BinaryTree._height(node.right)
 
     def is_avl_satisfied(self):
@@ -44,7 +50,10 @@ class AVLTree(BST):
         Returns True if the avl tree satisfies that
         all nodes have a balance factor in [-1,0,1].
         '''
-        return AVLTree._is_avl_satisfied(self.root)
+        if self.root is None:
+            return True
+        else:
+            return AVLTree._is_avl_satisfied(self.root)
 
     @staticmethod
     def _is_avl_satisfied(node):
@@ -52,14 +61,16 @@ class AVLTree(BST):
         FIXME:
         Implement this function.
         '''
+        ret = True
         if AVLTree._balance_factor(node) not in [-1, 0, 1]:
+            print("node:", node.value, "hits", "balance_factor:", AVLTree._balance_factor(node))
             return False
-        elif not node:
-            return True
         else:
-            left = AVLTree._is_avl_satisfied(node.left)
-            right = AVLTree._is_avl_satisfied(node.right)
-            return left and right
+            if node.left:
+                ret &= AVLTree._is_avl_satisfied(node.left)
+            if node.right:
+                ret &= AVLTree._is_avl_satisfied(node.right)
+        return ret
 
     @staticmethod
     def _left_rotate(node):
@@ -73,15 +84,14 @@ class AVLTree(BST):
         tree code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
-        if node is not None or node.right is None:
-            return node
-        alt1 = Node(node.right.value)
-        alt1.right = node.right.right
-        alt2 = Node(node.value)
-        alt2.right = node.right.left
-        alt2.left = node.left
-        return alt1
-
+        new_tree = copy.copy(node)
+        if new_tree.left:
+            new_root = Node(node.left.value)
+            new_root.right = Node(node.value)
+            new_root.left = new_tree.left.left
+            new_root.right.right = new_tree.right
+            new_root.right.left = new_tree.left.right
+        return new_tree
     @staticmethod
     def _right_rotate(node):
         '''
@@ -94,15 +104,14 @@ class AVLTree(BST):
         code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
-        if node is None or node.left is None:
-            return node
-        alt1 = Node(node.left.value)
-        alt1.left = node.left.left
-        alt2 = Node(node.value)
-        alt2.right = node.right
-        alt2.left = node.left.left
-        alt1.right = alt2
-        return alt1
+        new_tree = copy.copy(node)
+        if new_tree.right:
+            new_root = Node(node.right.value)
+            new_root.left = Node(node.value)
+            new_root.right = new_tree.right.right
+            new_root.left.left = new_tree.left
+            new_root.left.right = new_tree.right.left
+        return new_tree
 
     def insert(self, value):
         '''
@@ -122,7 +131,7 @@ class AVLTree(BST):
         your insert function for the BST,
         but it will also call the left and right rebalancing functions.
         '''
-        if self.root:
+        if self.root is not None:
             self.root = AVLTree._insert(self.root, value)
         else:
             self.root = Node(value)
