@@ -127,13 +127,6 @@ class AVLTree(BST):
         else:
             self.root = Node(value)
 
-    def insert_list(self, xs):
-        for i in xs:
-            if self.root:
-                self.root = AVLTree._insert(self.root, i)
-            else:
-                self.root = Node(i)
-
     @staticmethod
     def _insert(node, value):
         if not node:
@@ -155,6 +148,13 @@ class AVLTree(BST):
                 node.right = AVLTree._right_rotate(node.right)
                 return AVLTree._left_rotate(node)
         return node
+
+    def insert_list(self, xs):
+        for i in xs: 
+            if self.root:
+                self.root = AVLTree._insert(self.root, i)
+            else:
+                self.root = Node(i)
 
     @staticmethod
     def _rebalance(node):
