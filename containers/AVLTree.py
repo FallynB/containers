@@ -6,7 +6,7 @@ but there are fewer of them.
 '''
 
 from containers.BinaryTree import BinaryTree, Node
-# from containers.BST import BST
+from containers.BST import BST
 
 
 class AVLTree():
