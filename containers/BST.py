@@ -53,6 +53,14 @@ class BST(BinaryTree):
         Convert the contents of both trees into a sorted list,
         then compare those sorted lists for equality.
         '''
+        if self is None or t2 is None:
+            return False
+        list_1 = self.to_list('inorder')
+        list_2 = t2.to_list('inorder')
+        if list_1 == list_2:
+            return True
+        else:
+            return False
 
     def is_bst_satisfied(self):
         '''
