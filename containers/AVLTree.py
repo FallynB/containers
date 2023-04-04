@@ -122,8 +122,10 @@ class AVLTree(BST):
         your insert function for the BST,
         but it will also call the left and right rebalancing functions.
         '''
-        super().insert(value)
-        return AVLTree._insert(self.root)
+        if not self.root:
+            self.root = Node(value)
+        else:
+            self.root = AVLTree._insert(self.root, value)
 
     def insert_list(self, xs):
         for x in xs:
@@ -141,6 +143,7 @@ class AVLTree(BST):
             else:
                 rchild = AVLTree._insert(node.right, value)
                 node.right = rchild
+
         fullt = AVLTree()
         fullt.root = node
         balanced = fullt._rebalance()
