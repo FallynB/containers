@@ -73,16 +73,14 @@ class AVLTree(BST):
         tree code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
-        copyy = node
-        if copyy.right:
-            altroot = Node(copyy.right.value)
-            altroot.left = Node(copyy.value)
-            altroot.right = copyy.right.right
-            altroot.left.right = copyy.right.left
-            altroot.left.left = copyy.left
-            return altroot
-        else:
-            return copyy
+        if node is not None or node.right is None:
+            return node
+        alt1 = Node(node.right.value)
+        alt1.right = node.right.right
+        alt2 = Node(node.value)
+        alt2.right = node.right.left
+        alt2.left = node.left
+        return alt1
 
     @staticmethod
     def _right_rotate(node):
@@ -96,16 +94,15 @@ class AVLTree(BST):
         code is fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
-        copyy = node
-        if copyy.left:
-            altroot = Node(copyy.left.value)
-            altroot.left = Node(copyy.value)
-            altroot.right = copyy.left.left
-            altroot.right.left = copyy.left.right
-            altroot.right.right = copyy.right
-            return altroot
-        else:
-            return copyy
+        if node is None or node.left is None:
+            return node
+        alt1 = Node(node.left.value)
+        alt1.left = node.left.left
+        alt2 = Node(node.value)
+        alt2.right = node.right
+        alt2.left = node.left.left
+        alt1.right = alt2
+        return alt1
 
     def insert(self, value):
         '''
