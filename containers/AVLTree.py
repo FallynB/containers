@@ -52,14 +52,14 @@ class AVLTree(BST):
         FIXME:
         Implement this function.
         '''
-        if node is None:
-            return True
         if AVLTree._balance_factor(node) not in [-1, 0, 1]:
             return False
+        elif not node:
+            return True
         else:
-            one = AVLTree._is_avl_satisfied(node.left)
-            two = AVLTree._is_avl_satisfied(node.right)
-            return one and two
+            left = AVLTree._is_avl_satisfied(node.left)
+            right = AVLTree._is_avl_satisfied(node.right)
+            return left and right
 
     @staticmethod
     def _left_rotate(node):
@@ -129,10 +129,7 @@ class AVLTree(BST):
 
     def insert_list(self, xs):
         for x in xs:
-            if self.root:
                 self.root = AVLTree._insert(self.root, x)
-            else:
-                self.root = Node(x)
 
     @staticmethod
     def _insert(node, value):
