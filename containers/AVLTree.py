@@ -130,6 +130,8 @@ class AVLTree(BST):
     def insert_list(self, xs):
         for x in xs:
             self.root = AVLTree._insert(self.root, x)
+        else:
+            self.root = Node(x)
 
     @staticmethod
     def _insert(node, value):
