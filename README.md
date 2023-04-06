@@ -6,3 +6,4 @@ Build status:
 1. [![](https://github.com/FallynB/containers/workflows/tests-range/badge.svg)](https://github.com/FallynB/containers/actions?query=workflow%3Atests-range)
 1. [![](https://github.com/FallynB/containers/workflows/tests-BST/badge.svg)](https://github.com/FallynB/containers/actions?query=workflow%3Atests-BST)
 1. [![](https://github.com/FallynB/containers/workflows/tests-BinaryTree/badge.svg)](https://github.com/FallynB/containers/actions?query=workflow%3Atests-BinaryTree)
+1. [![](https://github.com/FallynB/containers/workflows/tests-Heap/badge.svg)](https://github.com/FallynB/containers/actions?query=workflow%3Atests-Heap)
