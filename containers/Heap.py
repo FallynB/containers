@@ -63,14 +63,14 @@ class Heap(BinaryTree):
         FIXME:
         Implement this method.
         '''
-        returnVal = True
+        returnval = True
         if node.left:
-            returnVal &= node.value <= node.left.value
-            returnVal &= Heap._is_heap_satisfied(node.left)
+            returnval &= node.value <= node.left.value
+            returnval &= Heap._is_heap_satisfied(node.left)
         if node.right:
-            returnVal &= node.value <= node.right.value
-            returnVal &= Heap._is_heap_satisfied(node.right)
-        return returnVal
+            returnval &= node.value <= node.right.value
+            returnval &= Heap._is_heap_satisfied(node.right)
+        return returnval
 
     def insert(self, value):
         '''
@@ -109,7 +109,7 @@ class Heap(BinaryTree):
                 Heap._insert(node.left, value, brep[1:])
             if node.value > node.right.value:
                 node.value, node.right.value = node.right.value, node.value
-    
+
     def insert_list(self, xs):
         '''
         Given a list xs, insert each element of xs into self.
@@ -165,11 +165,11 @@ class Heap(BinaryTree):
             if remove[0] == '1':
                 num = node.right.value
                 node.right = None
-                return val
+                return num
             else:
                 num = node.left.value
                 node.left = None
-                return val
+                return num
         elif remove[0] == '1':
             remove.pop(0)
             return Heap._remove_bottom_right(node.right, remove)
@@ -177,7 +177,7 @@ class Heap(BinaryTree):
             remove.pop(0)
             return Heap._remove_bottom_right(node.left, remove)
 
-    @statucmethod
+    @staticmethod
     def _trickle(node):
         if node.left and node.right:
             if node.value > node.right.value and node.value < node.left.value:
@@ -202,4 +202,3 @@ class Heap(BinaryTree):
                         node.value, node.right.value = node.right.value, node.value
                         node.right = Heap._trickle(node.right)
             return node
-
