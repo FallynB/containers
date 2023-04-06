@@ -93,7 +93,7 @@ class Heap(BinaryTree):
         '''
         brep = bin(self.num_nodes)[3:]
         self.num_nodes += 1
-        
+
         if self.root is None:
             self.root = Node(value)
         else:
